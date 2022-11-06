@@ -1,5 +1,8 @@
 let numeri = [];
+let numeriGiusti = [];
 let randomNumeri = 5;
+let numeriRandomHtml = document.getElementById("random");
+let risultato = document.getElementById("risultato");
 
 
 
@@ -19,9 +22,32 @@ function numeriRandom() {
             numeri.push(numRandom);
         }
     }
-    random.append(numeri);    
+    for (let i = 0; i < numeri.length; i++) {
+        numeriRandomHtml.innerHTML += `<div class="box">${numeri[i]}</div>`
+    }
 }
 
-function play(){
-    numeriRandom();    
+setTimeout(function () {
+    numeriRandomHtml.style.display = "none";
+}, 3000);
+
+setTimeout(function () {
+    for (let y = 0; y < 5; y++) {
+        let numeroUtente = parseInt(prompt("Scrivi un numero presente nella lista precedente"));
+        if (numeri.includes(numeroUtente)) {
+            numeriGiusti.push(numeroUtente);
+        }
+    }
+    numeriRandomHtml.style.display="flex";
+    risultato.innerHTML=`Il tuo punteggio è: ${numeriGiusti.length}, i numeri indovinati sono: ${numeriGiusti}`
+    console.log(numeriGiusti);
+}, 5000);
+
+function play() {
+    svuotaGriglia();
+    numeriRandom();
+}
+
+function svuotaGriglia() {
+    random.innerHTML = "";
 }
