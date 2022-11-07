@@ -7,7 +7,6 @@ let risultato = document.getElementById("risultato");
 
 
 
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -27,25 +26,23 @@ function numeriRandom() {
     }
 }
 
-setTimeout(function () {
-    numeriRandomHtml.style.display = "none";
-}, 3000);
-
-setTimeout(function () {
-    for (let y = 0; y < 5; y++) {
-        let numeroUtente = parseInt(prompt("Scrivi un numero presente nella lista precedente"));
-        if (numeri.includes(numeroUtente)) {
-            numeriGiusti.push(numeroUtente);
-        }
-    }
-    numeriRandomHtml.style.display="flex";
-    risultato.innerHTML=`Il tuo punteggio è: ${numeriGiusti.length}, i numeri indovinati sono: ${numeriGiusti}`
-    console.log(numeriGiusti);
-}, 5000);
-
 function play() {
     svuotaGriglia();
     numeriRandom();
+    setTimeout(function () {
+        numeriRandomHtml.style.display = "none";
+    }, 3000);
+    setTimeout(function () {
+        for (let y = 0; y < 5; y++) {
+            let numeroUtente = parseInt(prompt("Scrivi un numero presente nella lista precedente"));
+            if (numeri.includes(numeroUtente)) {
+                numeriGiusti.push(numeroUtente);
+            }
+        }
+        numeriRandomHtml.style.display="flex";
+        risultato.innerHTML=`Il tuo punteggio è: ${numeriGiusti.length}, i numeri indovinati sono: ${numeriGiusti}`
+        console.log(numeriGiusti);
+    }, 5000);
 }
 
 function svuotaGriglia() {
